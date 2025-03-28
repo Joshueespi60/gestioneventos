@@ -7,10 +7,8 @@ package capainterfaz;
 import capanegocio.UsuarioNegocio;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Joshue
- */
+
+
 public class LoginForm extends javax.swing.JFrame {
     
     private UsuarioNegocio usuarioNegocio;

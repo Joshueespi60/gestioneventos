@@ -7,10 +7,7 @@ package capanegocio;
 import capadatos.UsuarioDAO;
 import capaentidad.Usuario;
 
-/**
- *
- * @author Joshue
- */
+
 public class UsuarioNegocio {
     private UsuarioDAO usuarioDAO;
 

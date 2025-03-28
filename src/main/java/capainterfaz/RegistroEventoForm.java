@@ -4,18 +4,13 @@
  */
 package capainterfaz;
 
-import capaentidad.Evento;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+
 import capanegocio.EventoNegocio;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.time.LocalDateTime;
-/**
- *
- * @author Joshue
- */
+
+
 public class RegistroEventoForm extends javax.swing.JFrame {
     
     private EventoNegocio eventoNegocio;
@@ -166,35 +161,43 @@ public class RegistroEventoForm extends javax.swing.JFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
      // Obtener los datos del formulario
 
-    // Obtener el nombre y la descripción como texto
+     // Obtener el nombre y la descripción como texto
     String nombre = txtNombre.getText();
     String descripcion = txtDescripcion.getText(); // Asegúrate de que txtDescripcion es un JTextArea
 
     // Obtener la fecha desde el JDateChooser (convirtiendo de Date a LocalDateTime)
     java.util.Date utilDate = txtFecha.getDate();  // Obtienes un objeto java.util.Date
     if (utilDate != null) {
-        // Convertir java.util.Date a LocalDateTime
-        LocalDateTime fecha = utilDate.toInstant()
-                .atZone(java.time.ZoneId.systemDefault())
-                .toLocalDateTime();
+    // Convertir java.util.Date a LocalDateTime
+    LocalDateTime fecha = utilDate.toInstant()
+            .atZone(java.time.ZoneId.systemDefault())
+            .toLocalDateTime();
 
-        // Obtener el lugar, capacidad y precio
-        String lugar = txtLugar.getText();
-        int capacidad = (Integer) spnCapacidad.getValue();
-        double precio = Double.parseDouble(txtPrecio.getText());
+    // Obtener el lugar, capacidad y precio
+    String lugar = txtLugar.getText();
+    int capacidad = (Integer) spnCapacidad.getValue();
+    double precio = Double.parseDouble(txtPrecio.getText());
 
-        // Guardar el evento usando la capa de negocio
-        boolean guardado = eventoNegocio.guardarEvento(nombre, fecha.toString(), lugar, descripcion, capacidad, precio);
+    // Guardar el evento usando la capa de negocio
+    boolean guardado = eventoNegocio.guardarEvento(nombre, fecha.toString(), lugar, descripcion, capacidad, precio);
 
-        // Confirmación de guardado
-        if (guardado) {
-            JOptionPane.showMessageDialog(this, "Evento registrado exitosamente!");
-        } else {
-            JOptionPane.showMessageDialog(this, "Hubo un error al guardar el evento.");
-        }
+    // Confirmación de guardado
+    if (guardado) {
+        JOptionPane.showMessageDialog(this, "Evento registrado exitosamente!");
+
+        // Limpiar los campos después de guardar
+        txtNombre.setText("");
+        txtDescripcion.setText("");  // Si es JTextArea, se limpia igual
+        txtFecha.setDate(null);  // Limpiar la fecha
+        txtLugar.setText("");
+        spnCapacidad.setValue(0);  // Limpiar el Spinner
+        txtPrecio.setText("");  // Limpiar el campo de precio
     } else {
-        JOptionPane.showMessageDialog(this, "Por favor, selecciona una fecha válida.");
+        JOptionPane.showMessageDialog(this, "Hubo un error al guardar el evento.");
     }
+    } else {
+    JOptionPane.showMessageDialog(this, "Por favor, selecciona una fecha válida.");
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**

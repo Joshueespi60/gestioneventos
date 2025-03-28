@@ -7,10 +7,7 @@ package capadatos;
 import capaentidad.Usuario;
 import java.sql.*;
 
-/**
- *
- * @author Joshue
- */
+
 public class UsuarioDAO {
      // Método para verificar si un usuario existe en la base de datos
     public Usuario login(String username, String password) {

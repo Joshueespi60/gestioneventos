@@ -6,10 +6,7 @@ package capaentidad;
 
 import java.time.LocalDateTime;
 
-/**
- *
- * @author Joshue
- */
+
 public class Evento {
     private int id;
     private String nombre;

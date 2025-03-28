@@ -8,10 +8,7 @@ import capaentidad.Evento;
 import java.time.LocalDateTime;
 import java.util.List;
 
-/**
- *
- * @author Joshue
- */
+
 public class EventoNegocio {
    private EventoDAO eventoDAO;
 

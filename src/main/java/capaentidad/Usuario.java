@@ -4,10 +4,8 @@
  */
 package capaentidad;
 
-/**
- *
- * @author Joshue
- */
+
+
 public class Usuario {
     private int idUsuario;
     private String username;

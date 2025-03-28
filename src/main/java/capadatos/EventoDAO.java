@@ -8,10 +8,8 @@ import capaentidad.Evento;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-/**
- *
- * @author Joshue
- */
+
+
 public class EventoDAO {
     private Connection connection;
 

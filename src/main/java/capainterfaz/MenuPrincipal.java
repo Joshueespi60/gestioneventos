@@ -4,10 +4,7 @@
  */
 package capainterfaz;
 
-/**
- *
- * @author Joshue
- */
+
 public class MenuPrincipal extends javax.swing.JFrame {
 
     /**
