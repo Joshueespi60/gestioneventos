@@ -1,26 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    
+
     <groupId>capainterfaz</groupId>
     <artifactId>gestioneventos</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
+    <!-- Configuración para compilar con JDK 21 -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>21</maven.compiler.release>
-        <!-- Aquí especificamos que la clase principal es LoginForm -->
+        <!-- Clase principal para ejecutar el LoginForm -->
         <exec.mainClass>capainterfaz.LoginForm</exec.mainClass>  
     </properties>
 
+    <!-- Dependencias del proyecto -->
     <dependencies>
-        <!-- Dependencia para MySQL -->
+        <!-- Dependencia para conectar a MySQL -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.29</version> <!-- Reemplaza con la versión que estés usando -->
+            <version>8.0.29</version> <!-- Asegúrate de que esta versión sea la correcta -->
+        </dependency>
+        
+        <!-- Dependencia para el JCalendar (si lo necesitas para las fechas) -->
+        <dependency>
+            <groupId>com.toedter</groupId>
+            <artifactId>jcalendar</artifactId>
+            <version>1.4</version> <!-- Si tienes problemas con esta versión, prueba con otras -->
+        </dependency>
+
+        <!-- Dependencia para realizar la conversión de Java 8 DateTime API -->
+        <dependency>
+            <groupId>org.threeten</groupId>
+            <artifactId>threetenbp</artifactId>
+            <version>1.5.0</version>
         </dependency>
     </dependencies>
+
+    <!-- Configuración del plugin para compilar el proyecto -->
+    <build>
+        <plugins>
+            <!-- Plugin de Maven para compilar el código con la versión de Java que hemos especificado -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>21</source> <!-- Compilar con JDK 21 -->
+                    <target>21</target> <!-- Generar bytecode para JDK 21 -->
+                </configuration>
+            </plugin>
+
+            <!-- Plugin para ejecutar la aplicación desde Maven -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>capainterfaz.LoginForm</mainClass> <!-- Clase principal para ejecutar LoginForm -->
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
     <name>gestioneventos</name>
 </project>
